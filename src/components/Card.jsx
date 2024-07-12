@@ -8,9 +8,7 @@ const Card = ({
   time,
 }) => {
   return (
-    <div
-      className={`${customStyle} rounded-[8px] flex-grow text-white min-w-[300px]`}
-    >
+    <div className={`${customStyle} rounded-[8px] flex-grow min-w-[300px]`}>
       <h3 className='text-base flex gap-3 items-center pb-3 pt-5 px-5'>
         {title}
         <svg
