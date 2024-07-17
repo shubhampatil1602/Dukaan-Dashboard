@@ -1,12 +1,16 @@
+import { useState } from 'react';
 import Home from './components/Home';
 import Sidebar from './components/Sidebar';
+import { ToggleProvider } from './context/ToggleContext';
 
 const App = () => {
   return (
-    <div className='flex w-full'>
-      <Sidebar />
-      <Home />
-    </div>
+    <ToggleProvider>
+      <div className='flex w-full'>
+        <Sidebar />
+        <Home />
+      </div>
+    </ToggleProvider>
   );
 };
 

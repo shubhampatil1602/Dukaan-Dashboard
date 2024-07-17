@@ -7,7 +7,9 @@ import Footer from './Footer';
 
 const Hero = () => {
   return (
-    <div className='bg-[#fafafa] px-8 py-8 flex flex-col gap-y-6 overflow-x-scroll'>
+    <div
+      className={`bg-[#fafafa] px-8 py-8 flex flex-col gap-y-6 overflow-x-scroll`}
+    >
       <Overview />
       <Cards />
       <TwoButtons />

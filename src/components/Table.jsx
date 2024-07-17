@@ -34,7 +34,7 @@ const Table = () => {
         </thead>
         <tbody className='bg-white divide-[#E6E6E6]'>
           {tableDataState.map((data) => (
-            <tr className='text-sm'>
+            <tr className='text-sm' key={data.orderId}>
               <td className='px-3 py-[10px] whitespace-nowrap text-[#146EB4] font-medium'>
                 {data.orderId}
               </td>

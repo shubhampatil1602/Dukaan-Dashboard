@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import speaker from '../icons/speaker.png';
+import { ToggleContext } from '../context/ToggleContext';
 
 const Navbar = () => {
+  const { toggle, setToggle } = useContext(ToggleContext);
+  const handleToggle = () => setToggle(!toggle);
   return (
     <nav className='w-full border-b flex justify-between items-center py-3 px-8 sticky top-0 bg-white'>
       <div className='flex justify-center items-center gap-4'>
@@ -8,13 +12,14 @@ const Navbar = () => {
           xmlns='http://www.w3.org/2000/svg'
           fill='none'
           viewBox='0 0 24 24'
-          stroke-width='3'
+          strokeWidth='3'
           stroke='currentColor'
-          className='block md:hidden size-8 cursor-pointer'
+          className='block lg:hidden size-8 cursor-pointer'
+          onClick={handleToggle}
         >
           <path
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            strokeLinecap='round'
+            strokeLinejoin='round'
             d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
           />
         </svg>
@@ -28,13 +33,13 @@ const Navbar = () => {
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
             viewBox='0 0 24 24'
-            stroke-width='2'
+            strokeWidth='2'
             stroke='currentColor'
             className='size-4'
           >
             <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeLinecap='round'
+              strokeLinejoin='round'
               d='M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z'
             />
           </svg>
@@ -44,7 +49,7 @@ const Navbar = () => {
 
       <form className='w-[386px] hidden md:block'>
         <label
-          for='search'
+          htmlFor='search'
           className='mb-2 text-sm font-medium text-gray-900 sr-only'
         >
           Search
@@ -53,23 +58,21 @@ const Navbar = () => {
           <div className='absolute inset-y-0 start-0 flex items-center ps-4 pointer-events-none'>
             <svg
               className='w-3.5 h-3.5 text-gray-500'
-              aria-hidden='true'
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
               viewBox='0 0 20 20'
             >
               <path
                 stroke='currentColor'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
                 d='m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z'
               />
             </svg>
           </div>
           <input
             type='search'
-            id='search'
             className='block bg-[#f2f2f2] w-full px-4 py-[9px] ps-10 text-md text-gray-900 rounded-lg outline-none'
             placeholder='Search features, tutorials, etc.'
             required
@@ -85,7 +88,7 @@ const Navbar = () => {
           <img
             src={'https://www.svgrepo.com/show/7882/down-arrow.svg'}
             className='h-[1em] w-[1em]'
-            alt=''
+            alt='img'
           />
         </button>
       </div>
