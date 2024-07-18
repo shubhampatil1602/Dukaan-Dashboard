@@ -72,7 +72,7 @@ const Sidebar = () => {
       <aside>
         <div
           className={`fixed lg:sticky top-0 left-0 bg-[#1E2640] text-white p-2 gap-3 h-screen flex flex-col justify-between items-center z-50 transition-all duration-300 ${
-            toggle ? 'w-1/2 sm:w-56' : 'w-0 sm:w-16 opacity-0'
+            toggle ? 'w-2/3 sm:w-56' : 'w-0 sm:w-16 opacity-0'
           } overflow-y-hidden`}
         >
           <div className={`w-full ${toggle ? 'block' : 'hidden sm:block'}`}>

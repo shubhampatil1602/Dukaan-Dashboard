@@ -1,6 +1,28 @@
+import { useContext, useEffect } from 'react';
 import updown from '../icons/updown.png';
+import { ToggleContext } from '../context/ToggleContext';
+import { tableData } from '../data/table';
 
 const TableSearchAndButtons = () => {
+  const { search, setSearch, setTableDataState } = useContext(ToggleContext);
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setSearch(value);
+    filterData(value);
+  };
+
+  const filterData = (value) => {
+    const filterSearchData = tableData.filter((data) => {
+      return data.transactionId.includes(value) || data.orderId.includes(value);
+    });
+
+    setTableDataState(value ? filterSearchData : tableData);
+  };
+
+  useEffect(() => {
+    filterData(search);
+  }, [search]);
   return (
     <div className='flex justify-between'>
       <form className='w-[300px]'>
@@ -31,7 +53,8 @@ const TableSearchAndButtons = () => {
             type='search'
             className='block w-full px-4 py-1.5 border ps-10 text-md text-gray-900 rounded outline-none'
             placeholder='Order ID or transactions ID'
-            required
+            value={search}
+            onChange={handleChange}
           />
         </div>
       </form>
@@ -40,6 +63,7 @@ const TableSearchAndButtons = () => {
         <button className='flex items-center gap-[6px] px-3 py-[6px] border border-[#D9D9D9] text-[#4D4D4D] rounded min-w-[75px]'>
           Sort <img src={updown} alt='' />
         </button>
+
         <button className='flex items-center p-2 border border-[#D9D9D9] text-[#4D4D4D] rounded'>
           <svg
             xmlns='http://www.w3.org/2000/svg'

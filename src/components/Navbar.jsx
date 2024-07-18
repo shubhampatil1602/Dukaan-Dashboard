@@ -6,7 +6,7 @@ const Navbar = () => {
   const { toggle, setToggle } = useContext(ToggleContext);
   const handleToggle = () => setToggle(!toggle);
   return (
-    <nav className='w-full border-b flex justify-between items-center py-3 px-8 sticky top-0 bg-white'>
+    <nav className='w-full border-b flex justify-between items-center py-3 px-8 sticky z-20 top-0 bg-white'>
       <div className='flex justify-center items-center gap-4'>
         <svg
           xmlns='http://www.w3.org/2000/svg'

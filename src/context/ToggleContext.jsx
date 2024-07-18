@@ -1,9 +1,12 @@
 import { createContext, useState, useEffect } from 'react';
+import { tableData } from '../data/table';
 
 export const ToggleContext = createContext();
 
 export const ToggleProvider = ({ children }) => {
   const [toggle, setToggle] = useState(window.innerWidth >= 1024);
+  const [search, setSearch] = useState('');
+  const [tableDataState, setTableDataState] = useState(tableData);
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,7 +24,16 @@ export const ToggleProvider = ({ children }) => {
   }, []);
 
   return (
-    <ToggleContext.Provider value={{ toggle, setToggle }}>
+    <ToggleContext.Provider
+      value={{
+        toggle,
+        setToggle,
+        search,
+        setSearch,
+        tableDataState,
+        setTableDataState,
+      }}
+    >
       {children}
     </ToggleContext.Provider>
   );

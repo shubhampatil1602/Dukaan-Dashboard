@@ -1,8 +1,8 @@
-import { tableData } from '../data/table';
-import { useState } from 'react';
+import { useContext } from 'react';
+import { ToggleContext } from '../context/ToggleContext';
 
 const Table = () => {
-  const [tableDataState] = useState(tableData);
+  const { tableDataState } = useContext(ToggleContext);
   return (
     <div className='overflow-x-auto rounded-md'>
       <table className='w-full'>
@@ -15,21 +15,11 @@ const Table = () => {
         </colgroup>
         <thead className='text-[#4D4D4D]'>
           <tr className='bg-[#F2F2F2]'>
-            <th className='px-3 py-[10px] text-left text-sm font-medium tracking-wider rounded-l'>
-              Order ID
-            </th>
-            <th className='px-3 py-[10px] text-left text-sm font-medium tracking-wider'>
-              Status
-            </th>
-            <th className='px-3 py-[10px] text-left text-sm font-medium tracking-wider'>
-              Transaction ID
-            </th>
-            <th className='px-3 py-[10px] text-left text-sm font-medium tracking-wider'>
-              Refund Date
-            </th>
-            <th className='px-3 py-[10px] text-right text-sm font-medium tracking-wider rounded-r'>
-              Order Amount
-            </th>
+            <TableHead sty={'rounded-l'}>Order ID</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Transaction ID</TableHead>
+            <TableHead>Refund Date</TableHead>
+            <TableHead sty={'rounded-r'}>Order Amount</TableHead>
           </tr>
         </thead>
         <tbody className='bg-white divide-[#E6E6E6]'>
@@ -66,3 +56,13 @@ const Table = () => {
 };
 
 export default Table;
+
+const TableHead = ({ children, sty }) => {
+  return (
+    <th
+      className={`px-3 py-[10px] text-left text-sm font-medium tracking-wider ${sty}`}
+    >
+      {children}
+    </th>
+  );
+};
